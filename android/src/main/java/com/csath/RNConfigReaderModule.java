@@ -52,6 +52,8 @@ public class RNConfigReaderModule extends ReactContextBaseJavaModule {
           }
         }
       }
+      
+      constants.put("TEST_CONFIG_FIELD", getResources().getString(R.string.TEST_CONFIG_FIELD));
       catch (ClassNotFoundException e) {
         Log.d("ReactNative", "RNConfigReader: Could not find BuildConfig class");
       }
