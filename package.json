@@ -1,6 +1,6 @@
 {
   "name": "rn-config-reader",
-  "version": "5.1.1",
+  "version": "5.1.2",
   "description": "Simply access android resources strings and ios info.plist values in JS",
   "main": "index.js",
   "scripts": {
