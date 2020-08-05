@@ -35,16 +35,17 @@ public class RNConfigReaderModule extends ReactContextBaseJavaModule {
       final Map<String, Object> constants = new HashMap<>();
       Context context = getReactApplicationContext();
       int idVariables = context.getResources().getIdentifier("export_variables", "array", context.getPackageName());
-      String[] variables = context.getResources().getStringArray(idVariables);
 
-      for (String varName : variables){
-        int id = context.getResources().getIdentifier(varName, "string", context.getPackageName());
-        constants.put(varName, context.getResources().getString(id));
+      if (idVariables != 0){
+        String[] variables = context.getResources().getStringArray(idVariables);
+        for (String varName : variables){
+          int id = context.getResources().getIdentifier(varName, "string", context.getPackageName());
+          constants.put(varName, context.getResources().getString(id));
+        }
+      }else{
+        Log.d("ReactNative", "RNConfigReader: " + idVariables);
       }
-
-      Log.d("ReactNative", "RNConfigReader: Id XML " + idVariables);
-
- 
+      
       return constants;
   }
 

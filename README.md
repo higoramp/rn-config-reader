@@ -1,6 +1,8 @@
-# 🛠 react-native-config-reader [![npm](https://img.shields.io/npm/v/react-native-config-reader.svg)](https://npmjs.com/package/react-native-config-reader)  [![npm](https://img.shields.io/npm/dm/react-native-config-reader.svg)](https://npmjs.com/package/react-native-config-reader)
+# 🛠 react-native-config-reader [![npm](https://img.shields.io/npm/v/react-native-config-reader.svg)](https://npmjs.com/package/rn-config-reader)  [![npm](https://img.shields.io/npm/dm/react-native-config-reader.svg)](https://npmjs.com/package/rn-config-reader)
 
-A native library to access all the native code's build configurations from JS.
+A native library to access configuration variables from JS code.
+
+based on [csath project](https://github.com/csath/react-native-config-reader)
 
 
 For **react-native@0.60+** versions use **react-native-config-reader@4.0+**
@@ -13,9 +15,9 @@ For **rn 0.60+ Auto Linking** will do things for you.
 
 If not follow these: 
 
-1. `$ npm install react-native-config-reader --save` or  `$ yarn add react-native-config-reader`
+1. `$ npm install rn-config-reader --save` or  `$ yarn add rn-config-reader`
 
-2. `$ react-native link react-native-config-reader`
+2. `$ react-native link rn-config-reader`
 
 3. Go to **android/app/src/main/packageName/MainApplication.java** and find line
 
@@ -25,7 +27,7 @@ See [manual installation](#manual-installation) below if you have issues with `r
 
 ## Usage
 ```javascript
-import RNConfigReader from 'react-native-config-reader';
+import RNConfigReader from 'rn-config-reader';
 
 // access any of the defined config variables in andoird build gradle or ios info.plist
 const configValue = RNConfigReader.ANY_DEFINED_CONFIG_FIELD;
@@ -35,20 +37,15 @@ const configValue = RNConfigReader.ANY_DEFINED_CONFIG_FIELD;
 
 ### More examples
 
-Create new build config field inside android `build.gradle` file **(android/app/build.gradle)**
+Create a string-array item on  `strings.xml` file with the strings variables you want to expose to JS **(res/values/strings.xml)**
 
-```gradle
-android {
-
-    defaultConfig {
-        applicationId "com.react-native.react-native-config-reader"
-        versionCode 1
-        versionName "1.0"
-        
-        buildConfigField "String", "TEST_CONFIG_FIELD", "Hello I'm your test config value"
-    }
-}
-
+```xml
+<resources>
+    <string-array name="export_variables">
+        <item>TEST_CONFIG_FIELD</item>
+    </string-array>
+    <string name="TEST_CONFIG_FIELD">ConfigValue</string>
+</resources>
 ```
 Create new field inside ios `info.plist` file
 
@@ -73,7 +70,7 @@ Now you can acess them inside the JS code
 
 ```javascript
 import { Platform } from 'react-native';
-import RNConfigReader from 'react-native-config-reader';
+import RNConfigReader from 'rn-config-reader';
 
 if(Platform.OS === 'ios') {
   const iosBundleDisplayName = RNConfigReader.CFBundleDisplayName;
