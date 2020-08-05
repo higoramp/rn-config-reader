@@ -1,4 +1,4 @@
-# 🛠 react-native-config-reader [![npm](https://img.shields.io/npm/v/rn-config-reader.svg)](https://npmjs.com/package/rn-config-reader)  [![npm](https://img.shields.io/npm/dm/rn-config-reader.svg)](https://npmjs.com/package/rn-config-reader)
+# 🛠 rn-config-reader [![npm](https://img.shields.io/npm/v/rn-config-reader.svg)](https://npmjs.com/package/rn-config-reader)  [![npm](https://img.shields.io/npm/dm/rn-config-reader.svg)](https://npmjs.com/package/rn-config-reader)
 
 A native library to access configuration variables from JS code.
 
