@@ -1,7 +1,7 @@
 {
-  "name": "react-native-config-reader",
-  "version": "4.1.1",
-  "description": "Simply access android build configs and ios info.plist values in JS",
+  "name": "rn-config-reader",
+  "version": "5.1.1",
+  "description": "Simply access android resources strings and ios info.plist values in JS",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,7 +12,7 @@
     "ios",
     "config-reader"
   ],
-  "author": "csath - chanakaathurugiriya@gmail.com",
+  "author": "higoramp | csath - chanakaathurugiriya@gmail.com",
   "license": "MIT",
   "peerDependencies": {
     "react-native": "^0.41.2",
@@ -20,10 +20,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/csath/react-native-config-reader.git"
+    "url": "git+https://github.com/higoramp/rn-config-reader.git"
   },
   "bugs": {
-    "url": "https://github.com/csath/react-native-config-reader/issues"
+    "url": "https://github.com/higoramp/rn-config-reader.git/issues"
   },
-  "homepage": "https://github.com/csath/react-native-config-reader#readme"
+  "homepage": "https://github.com/higoramp/rn-config-reader.git#readme"
 }
