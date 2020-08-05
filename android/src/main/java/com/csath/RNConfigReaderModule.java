@@ -18,6 +18,7 @@ import com.facebook.react.bridge.ReactContext;
 
 import java.util.Map;
 import java.util.HashMap;
+import android.content.res.XmlResourceParser;
 
 public class RNConfigReaderModule extends ReactContextBaseJavaModule {
   public RNConfigReaderModule(ReactApplicationContext reactContext) {
@@ -32,30 +33,20 @@ public class RNConfigReaderModule extends ReactContextBaseJavaModule {
   @Override
   public Map<String, Object> getConstants() {
       final Map<String, Object> constants = new HashMap<>();
-      try {
-        Context context = getReactApplicationContext();
-        int resId = context.getResources().getIdentifier("rn_config_reader_custom_package", "string", context.getPackageName());
-        String className;
-        try {
-          className = context.getString(resId);
-        } catch (Resources.NotFoundException e) {
-          className = getReactApplicationContext().getApplicationContext().getPackageName();
-        }
-        Class clazz = Class.forName(className + ".BuildConfig");
-        Field[] fields = clazz.getDeclaredFields();
-        for(Field f: fields) {
-          try {
-            constants.put(f.getName(), f.get(null));
-          }
-          catch (IllegalAccessException e) {
-            Log.d("ReactNative", "RNConfigReader: Could not access BuildConfig field " + f.getName());
-          }
-        }
-        constants.put("TEST_CONFIG_FIELD", context.getResources().getString(R.string.TEST_CONFIG_FIELD));
+      Context context = getReactApplicationContext();
+      int idVariables = context.getResources().getIdentifier("export_variables", "array", context.getPackageName());
+      String[] variables = context.getResources().getStringArray(idVariables);
+
+      for (String varName : variables){
+        int id = context.getResources().getIdentifier(varName, "string", context.getPackageName());
+        constants.put(varName, context.getResources().getString(id));
       }
-      catch (ClassNotFoundException e) {
-        Log.d("ReactNative", "RNConfigReader: Could not find BuildConfig class");
-      }
+
+      Log.d("ReactNative", "RNConfigReader: Id XML " + idVariables);
+
+ 
       return constants;
   }
+
+
 }
